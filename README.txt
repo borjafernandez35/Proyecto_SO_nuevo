@@ -30,3 +30,4 @@ Tabla de partidas: Invitaciones
 - Generada: Arnau
 - Verificado: Borja
 - Comunicado: Ángela
+https://drive.google.com/file/d/1BrZj-M8YeSbV2DGdK4ln2GeAR4JiFIA0/view?usp=sharing
