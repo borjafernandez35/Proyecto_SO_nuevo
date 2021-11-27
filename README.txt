@@ -31,3 +31,11 @@ Tabla de partidas: Invitaciones
 - Verificado: Borja
 - Comunicado: Ángela
 https://drive.google.com/file/d/1BrZj-M8YeSbV2DGdK4ln2GeAR4JiFIA0/view?usp=sharing
+
+#### Versión 5 del proyecto.
+
+Protección cross-threading y chat
+- Generada: Borja
+- Verificado: Ángela
+- Comunicado: Sofia
+

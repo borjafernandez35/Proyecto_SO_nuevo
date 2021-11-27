@@ -20,6 +20,9 @@ namespace WindowsFormsApp1
         Boolean log = false;
         Thread atender;
 
+
+        delegate void DelegadoRellenador(string mensaje);
+
         public Iniciar()
         {
             InitializeComponent();
@@ -84,21 +87,8 @@ namespace WindowsFormsApp1
 
                     case 7:     //Notificación
 
-                        string[] jugadores = mensaje.Split(',');
-
-                        jugador.ColumnCount = 1;
-                        jugador.RowCount = jugadores.Length;
-                        jugador.ColumnHeadersVisible = false;
-                        jugador.RowHeadersVisible = false;
-
-                   
-                        int i = 0;
-
-                        foreach (string nombre in jugadores) { 
-
-                            jugador[0,i].Value =nombre;
-                            i++;
-                        }
+                        DelegadoRellenador delegado = new DelegadoRellenador(RellenaJugadores);
+                        jugador.Invoke(delegado, new object[] { mensaje } ); 
 
                         break;
 
@@ -129,32 +119,71 @@ namespace WindowsFormsApp1
 
                     case 10:
                         
-                        string[] invitado = mensaje.Split(',');
-
-                        invitados.ColumnCount = 1;
-                        invitados.RowCount = invitado.Length;
-                        invitados.ColumnHeadersVisible = false;
-                        invitados.RowHeadersVisible = false;
-
-
-                        int j = 0;
-
-                        foreach (string nombre in invitado)
-                        {
-
-                            invitados[0, j].Value = nombre;
-                            j++;
-                        }
-
+                        DelegadoRellenador delegado2 = new DelegadoRellenador(RellenaInvitados);
+                        invitados.Invoke(delegado2, new object[] { mensaje } ); 
+                       
                         break;
 
                     case 11:
                         MessageBox.Show(mensaje);
                         break;
 
+                    case 12:
+
+                        DelegadoRellenador delegado3 = new DelegadoRellenador(RellenaChat);
+                        chat.Invoke(delegado3, new object[] { mensaje } ); 
+                       
+                        break;
+
                 }
             }
 
+        }
+
+        public void RellenaJugadores(string mensaje)
+        {
+            string[] jugadores = mensaje.Split(',');
+
+            jugador.ColumnCount = 1;
+            jugador.RowCount = jugadores.Length;
+            jugador.ColumnHeadersVisible = false;
+            jugador.RowHeadersVisible = false;
+
+
+            int i = 0;
+
+            foreach (string nombre in jugadores)
+            {
+
+                jugador[0, i].Value = nombre;
+                i++;
+            }
+        
+        }
+
+        public void RellenaInvitados(string mensaje)
+        {
+            string[] invitado = mensaje.Split(',');
+
+            invitados.ColumnCount = 1;
+            invitados.RowCount = invitado.Length;
+            invitados.ColumnHeadersVisible = false;
+            invitados.RowHeadersVisible = false;
+
+
+            int j = 0;
+
+            foreach (string nombre in invitado)
+            {
+
+                invitados[0, j].Value = nombre;
+                j++;
+            }
+        }
+
+        public void RellenaChat(string mensaje)
+        {
+            chat.Items.Add(mensaje);
         }
 
 
@@ -174,7 +203,7 @@ namespace WindowsFormsApp1
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse("147.83.117.22");
+            IPAddress direc = IPAddress.Parse("192.168.56.102");
             IPEndPoint ipep = new IPEndPoint(direc, 9070);
 
 
@@ -353,5 +382,21 @@ namespace WindowsFormsApp1
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }
+
+        private void MensajeRecibido(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void send_Click(object sender, EventArgs e)
+        {
+            string texto = "10/" + mensaje.Text;
+
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(texto);
+            server.Send(msg);
+        }
+
+       
     }
 }

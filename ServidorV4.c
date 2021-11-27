@@ -692,7 +692,32 @@ void *AtenderCliente(void *socket)
 			write(s, rechazo, strlen(rechazo));
 		}
 		
-		if (codigo != 0 && codigo !=7 && codigo !=8 && codigo !=9)
+	
+		
+		else if (codigo == 10) //CHAT
+		{
+			
+			char chat [500];
+			p = strtok(NULL, "/");
+			strcpy(chat, p);
+			
+			int pos = DamePosicion(&lista, nombre);
+			int id = lista.conectados[pos].partida;
+			
+			char enviado [500];
+			sprintf(enviado, "12/%s: %s", nombre, chat);
+			printf("%s\n", enviado);
+			
+			
+			int j;
+			for (j=0; j< tablas[id].numJugadores; j++){
+				write (tablas[id].jugadores[j].socket, enviado, strlen(enviado));
+			}
+			
+		}
+		
+		
+		if (codigo != 0 && codigo !=7 && codigo !=8 && codigo !=9 && codigo !=10)
 		{
 			printf("Respuesta: %s\n", respuesta);
 			// Enviamos respuesta
@@ -724,7 +749,7 @@ int main(int argc, char **argv)
 	}
 	
 	//Inicializar la conexion
-	conn = mysql_real_connect (conn, "shiva2.upc.es","root", "mysql", "T7tablas",0, NULL, 0);
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", "T7tablas",0, NULL, 0);
 	if (conn==NULL)
 	{
 		printf ("Error al inicializar la conexion: %u %s\n",
@@ -748,7 +773,7 @@ int main(int argc, char **argv)
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(50070);
+	serv_adr.sin_port = htons(9070);
 	
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
