@@ -38,4 +38,4 @@ Protección cross-threading y chat
 - Generada: Borja
 - Verificado: Ángela
 - Comunicado: Sofia
-
+https://drive.google.com/drive/folders/1n4INOz2f-sUBHDsg46fjQKLRzz-dZywf
