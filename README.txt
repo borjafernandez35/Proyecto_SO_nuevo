@@ -42,8 +42,11 @@ https://drive.google.com/drive/folders/1n4INOz2f-sUBHDsg46fjQKLRzz-dZywf
 
 ## Versión 6 del proyecto.
 
+El cliente del juego pesa demasiado y tiene más archivos de los permitidos para una cuenta como la nuestra en github. Por eso el cliente, junto con todo lo demás, esta colgado en el drive en la url de más abajo.
+
 Juego completo
 - Generada: Ángela
 - Verificada: Sofia
 - Comunicado: Arnau
 https://drive.google.com/drive/folders/16Yv6B2VmXg_ufsl7VBCdxfEHQ1ZtyyLJ
+
