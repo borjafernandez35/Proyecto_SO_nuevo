@@ -39,3 +39,11 @@ Protección cross-threading y chat
 - Verificado: Ángela
 - Comunicado: Sofia
 https://drive.google.com/drive/folders/1n4INOz2f-sUBHDsg46fjQKLRzz-dZywf
+
+## Versión 6 del proyecto.
+
+Juego completo
+- Generada: Ángela
+- Verificada: Sofia
+- Comunicado: Arnau
+https://drive.google.com/drive/folders/16Yv6B2VmXg_ufsl7VBCdxfEHQ1ZtyyLJ
