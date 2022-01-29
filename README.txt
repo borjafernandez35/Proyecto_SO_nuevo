@@ -49,4 +49,5 @@ Juego completo
 - Verificada: Sofia
 - Comunicado: Arnau
 https://drive.google.com/drive/folders/16Yv6B2VmXg_ufsl7VBCdxfEHQ1ZtyyLJ
+Vídeo: https://drive.google.com/file/d/1kbLu-e-BnjjMXRrZSwwou_SW4TED6Kw1/view?usp=sharing
 
